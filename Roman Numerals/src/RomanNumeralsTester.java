@@ -3,21 +3,23 @@ import java.util.Scanner;
 public class RomanNumeralsTester {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Please enter a number to convert to Roman Numerals: ");
+		System.out.print("Please enter a number to convert to Roman Numerals: ");
 		int numeral = scan.nextInt();
 		
 		String thousands=null;
 		String hundreds=null;
 		String tens=null;
 		String ones = null;
-		int tDigit = 0;
+		int tdigit=0;
+		int hdigit=0;
+		
 		
 		if (numeral > 3999) {
-			System.out.println("Please enter a number between 1 and 3,999.");
+			System.out.println("Invalid input. Must be a number between 1 and 3,999.");
 		}
 		
 		if (numeral >= 1000) {
-			int tdigit = Integer.parseInt(Integer.toString(numeral).substring(0, 1));
+			tdigit = Integer.parseInt(Integer.toString(numeral).substring(0, 1));
 			
 			if (tdigit == 3) {
 				thousands= ("MMM");
@@ -30,34 +32,43 @@ public class RomanNumeralsTester {
 			}
 			}
 		if (numeral >=100) {
-			int digit = numeral-(tDigit * 1000);
+			if (numeral >=1000) {
+				int thousandsNum = (tdigit*1000);
+				hdigit = (numeral-thousandsNum)/100;
+			}
+				else {
+					hdigit=numeral/100;
+				}
 			
-			if (digit== 9) {
+			if (hdigit== 9) {
 				hundreds= ("CM");
 			}
-			if (digit== 8) {
+			if (hdigit== 8) {
 				hundreds= ("DCCC");
 			}
-			if (digit== 7) {
+			if (hdigit== 7) {
 				hundreds= ("DCC");
 			}
-			if (digit== 6) {
+			if (hdigit== 6) {
 				hundreds= ("DC");
 			}
-			if (digit== 5) {
+			if (hdigit== 5) {
 				hundreds= ("D");
 			}
-			if (digit== 4) {
+			if (hdigit== 4) {
 				hundreds= ("CD");
 			}
-			if (digit==3) {
+			if (hdigit==3) {
 				hundreds= ("CCC");
 			}
-			if (digit==2) {
+			if (hdigit==2) {
 				hundreds= ("CC");
 			}
-			if (digit==1) {
+			if (hdigit==1) {
 				hundreds= ("C");
+			}
+			if (hdigit==0) {
+				hundreds = ("");
 			}
 			}
 		if (numeral>=10) {
@@ -90,10 +101,13 @@ public class RomanNumeralsTester {
 			if (digit == 1) {
 				tens= ("X");
 			}
+			if (digit == 0) {
+				tens= ("");
+			}
 		}
 		
 		if (numeral >=1) {
-			int digit = 4;
+			int digit = numeral %10;
 			
 			if (digit == 9) {
 				ones= ("IX");
@@ -121,17 +135,32 @@ public class RomanNumeralsTester {
 			}
 			if (digit == 1) {
 				ones= ("I");
-		
+			}
+			if (digit == 0) {
+				ones= ("");
 			}
 			
 			}
-		String finalNumber = thousands + hundreds + tens + ones;
-		System.out.println (finalNumber);
+		if (thousands != null) {
+			System.out.println(thousands+hundreds+tens+ones);
+		}
+		else
+			if (hundreds != null) {
+				System.out.println(hundreds+tens+ones);
+			}
+			else
+				if (tens != null) {
+					System.out.println(tens+ones);
+				}
+				else
+					if (ones != null) {
+						System.out.println(ones);
+					}
 		scan.close();
 			}
 		
 }
-//int I = 1;
+		//int I = 1;
 		//int V = 5;
 		//int X = 10;
 		//int L = 50;
