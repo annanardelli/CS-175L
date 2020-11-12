@@ -5,21 +5,23 @@
 public class BankAccount
 {
    private double balance;
-
+   private double interestPct;
    /**
       Constructs a bank account with zero balance.
    */
    
    
-   public BankAccount(double amount)
+   public BankAccount(double amount, double interest)
    {
       balance = amount;
+      interestPct = interest;
    }
    
    /**
       Makes a deposit into this account.
       @param amount the amount of the deposit
    */
+   
    public void deposit(double amount)
    {
       balance = balance + amount;
@@ -42,14 +44,16 @@ public class BankAccount
       @return the current balance
    */
    
-   public double interest(double newInt)
+   public double interest()
    {
-	return balance= balance*(1+(newInt*12));
+	return balance= balance+(balance*interestPct);
 	   
    }
+   
    
    public double getBalance()
    {
       return balance;
    }
+
 }

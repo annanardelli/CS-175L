@@ -7,7 +7,7 @@ public class BankAccountTester {
 		double newAmt = input.nextDouble();
 		System.out.println ("Enter interest value (decimal):");
 		double newInt =input.nextDouble();
-		BankAccount myBankAccount = new BankAccount(newAmt); //invokes BankAccount code lines 12-15
+		BankAccount myBankAccount = new BankAccount(newAmt, newInt); //invokes BankAccount code lines 12-15
 		System.out.println ("Created new Bank Account 'myBankAccount' with an interest of " +newInt+".");
 		System.out.println ("Deposited $"+newAmt+" into myBankAccount.");
 		System.out.println ("Please enter an amount to deposit: $");
@@ -19,8 +19,28 @@ public class BankAccountTester {
 		myBankAccount.withdraw(amount); //runs BankAccount code lines 31-34
 		System.out.println ("Withdrew $"+amount+" from myBankAccount.");
 		System.out.println ("Your current balance is $"+myBankAccount.getBalance()+".");
-		myBankAccount.interest(newInt);
+		myBankAccount.interest();
 		System.out.println ("Your balance after 1 year will be $" +myBankAccount.getBalance()+".");
 		input.close();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
