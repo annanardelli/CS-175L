@@ -1,3 +1,9 @@
+/**
+ * 
+ * @author AnnaNardelli
+ *Replaces text in a form letter with input from user.
+ */
+
 import java.util.Scanner;
 public class test {
 	static Scanner in = new Scanner(System.in);
@@ -18,6 +24,5 @@ public class test {
 		text=text.replaceAll("<answer>", answer);
 		System.out.println(text);
 		in.close();
-		
 	}
 	}
