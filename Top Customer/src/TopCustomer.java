@@ -8,22 +8,25 @@ public class TopCustomer {
 		Scanner strings = new Scanner(System.in);
 		ArrayList <String> customers = new ArrayList<String> ();
 		ArrayList <Double> prices = new ArrayList<Double> ();
+		System.out.print("Enter the first price: ");
 		while (input.hasNextDouble()) {
 			//int counter = 0;
-			System.out.println("Enter the price or 0 to end: ");
 			double price = input.nextDouble();
 			if (price == 0) {
-				input.close();
-				strings.close();
-				//RUN TOP CUSTOMER FINDER
+				TopCustomer bestCust= new TopCustomer();
+				System.out.println("Best customer's name: " + bestCust.nameOfBestCustomer(customers, prices));
+				break;
 			}
 			prices.add(price);
 			System.out.println("Enter the name: ");
-			String name = strings.next();
+			String name = strings.nextLine();
 			customers.add(name);
+			System.out.println("Enter the price or 0 to end: ");
 			//counter++;
 		}
-}
+		strings.close();
+		input.close();
+	}
 	public String nameOfBestCustomer(ArrayList<String> customers, ArrayList<Double> prices) {
 			double maxNumber= Collections.max(prices);
 			//int i =0;
@@ -37,6 +40,5 @@ public class TopCustomer {
 				//}
 			String name = customers.get(index);
 			return name;
-		}
-			
+		}	
 	}
